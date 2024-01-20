@@ -19,11 +19,31 @@
 
 <body>
 
-    <nav class="navbar bg-primary mb-3" data-bs-theme="dark">
-        <header class="container">
-            <a class="navbar-brand" href="#">Project 2 - {{ $title }}</a>
-        </header>
+    <nav class="navbar navbar-expand-md bg-primary mb-3" data-bs-theme="dark">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">Grāmatu Māja</span>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link"  href="/">Sākums</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/authors">Grāmatu autori</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/books">Grāmata</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
 
     <main class="container">
         <div class="row">
@@ -45,6 +65,8 @@
         </div>
 
     </footer>
+
+    <script src="/js/admin.js"></script>
 
     </body>
 
