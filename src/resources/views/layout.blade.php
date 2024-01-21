@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-md bg-primary mb-3" data-bs-theme="dark">
         <div class="container">
-            <span class="navbar-brand mb-0 h1">Grāmatu Māja</span>
+            <span class="navbar-brand mb-0 h1">Book house</span>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 data-bs-target="#navbarNav">
@@ -31,14 +31,24 @@ data-bs-target="#navbarNav">
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link"  href="/">Sākums</a>
+                        <a class="nav-link"  href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/authors">Grāmatu autori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/books">Grāmata</a>
-                    </li>
+
+                    @if(Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="/authors">Book authors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/books">Books</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">End</a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

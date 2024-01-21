@@ -8,11 +8,12 @@
         <div class="alert alert-danger">Please fix the errors!</div>
     @endif
 
-    <form method="post" action="{{ $author->exists ? '/authors/patch/' . $author->id : '/authors/put' }}">
-        @csrf
+    <form method="post" 
+    action="{{ $author->exists ? '/authors/patch/' . $author->id : '/authors/put' }}">
+    @csrf
 
         <div class="mb-3">
-            <label for="author-name" class="form-label">Autora vārds:</label>
+            <label for="author-name" class="form-label">Author's name and surname:</label>
 
             <input
                 type="text"
@@ -26,7 +27,7 @@
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Saglabāt</button>
+        <button type="submit" class="btn btn-primary">Save</button>
     </form>
 
 @endsection

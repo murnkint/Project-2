@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\Author;
+use App\Models\Genre;
 
 class BookController extends Controller
 {
@@ -46,27 +48,14 @@ class BookController extends Controller
                 'title' => 'Edit book',
                 'book' => $book,
                 'authors' => $authors,
+                'genres' => $genres,
             ]
         );
     }
 
     private function saveBookData(Book $book, BookRequest $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:3|max:256',
-            'author_id' => 'required',
-            'description' => 'nullable',
-            'price' => 'nullable|numeric',
-            'year' => 'numeric',
-            'image' => 'nullable|image',
-            'display' => 'nullable'
-        ]);
-
-        $book->name = $validatedData['name'];
-        $book->author_id = $validatedData['author_id'];
-        $book->description = $validatedData['description'];
-        $book->price = $validatedData['price'];
-        $book->year = $validatedData['year'];
+    
         $validatedData = $request->validated();
         $book->fill($validatedData);
         $book->display = (bool) ($validatedData['display'] ?? false);

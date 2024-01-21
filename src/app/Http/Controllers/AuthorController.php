@@ -28,7 +28,7 @@ class AuthorController extends Controller
         return view(
             'authors.form',
             [
-                'title' => 'Pievieno jaunu autoru',
+                'title' => 'Add a new author',
                 'author' => new Author()
             ]
         );
@@ -44,6 +44,19 @@ class AuthorController extends Controller
         $author = new Author();
         $author->name = $validatedData['name'];
         $author->save();
+
+        return redirect('/authors');
+    }
+
+    public function put(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
+
+        $author = new Author();
+            $author->name = $validatedData['name'];
+    $author->save();
 
         return redirect('/authors');
     }
@@ -81,4 +94,5 @@ class AuthorController extends Controller
     {
         $this->middleware('auth');
     }
+    
 }
