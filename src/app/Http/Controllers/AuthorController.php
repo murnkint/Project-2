@@ -32,20 +32,6 @@ class AuthorController extends Controller
                 'author' => new Author()
             ]
         );
-}
-
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required',
-        ]);
-
-        $author = new Author();
-        $author->name = $validatedData['name'];
-        $author->save();
-
-        return redirect('/authors');
     }
 
     public function put(Request $request)

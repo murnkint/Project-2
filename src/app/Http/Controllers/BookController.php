@@ -27,6 +27,7 @@ class BookController extends Controller
     public function create()
     {
         $authors = Author::orderBy('name', 'asc')->get();
+        $genres = Genre::orderBy('name', 'asc')->get();
 
         return view(
             'books.form',
@@ -34,13 +35,16 @@ class BookController extends Controller
                 'title' => 'Add book',
                 'book' => new Book(),
                 'authors' => $authors,
+                'genres' => $genres,
             ]
         );  
+        
     }
 
     public function update(Book $book)
     {
         $authors = Author::orderBy('name', 'asc')->get();
+        $genres = Genre::orderBy('name', 'asc')->get();
     
         return view(
             'books.form',
@@ -50,7 +54,9 @@ class BookController extends Controller
                 'authors' => $authors,
                 'genres' => $genres,
             ]
+    
         );
+        
     }
 
     private function saveBookData(Book $book, BookRequest $request)
@@ -84,7 +90,7 @@ class BookController extends Controller
     public function patch(Book $book, BookRequest $request)
     {
         $this->saveBookData($book, $request);
-        return redirect('/books/update/' . $book->id);
+        return redirect('/books');
     }
 
     public function delete(Book $book)

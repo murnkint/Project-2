@@ -11,8 +11,7 @@
 <form
     method="post"
     action="{{ $book->exists ? '/books/patch/' . $book->id : '/books/put' }}"
-    enctype="multipart/form-data"
-    >
+    enctype="multipart/form-data">
     @csrf
 
     <div class="mb-3">
@@ -50,6 +49,28 @@
         
         @error('author_id')
             <p class="invalid-feedback">{{ $errors->first('author_id') }}</p>
+        @enderror
+    </div>
+
+    <div class="mb-3">
+        <label for="book-genre" class="form-label">Genre</label>
+
+        <select
+            id="book-genre"
+            name="genre_id"
+            class="form-select @error('genre_id') is-invalid @enderror"
+        >
+            <option value="">Choose the genre!</option>
+            @foreach($genres as $genre)
+                <option
+                    value="{{ $genre->id }}"
+                    @if ($genre->id == old('genre_id', $book->genre->id ?? false)) selected @endif
+                >{{ $genre->name }}</option>
+            @endforeach
+        </select>
+        
+        @error('genre_id')
+            <p class="invalid-feedback">{{ $errors->first('genre_id') }}</p>
         @enderror
     </div>
 
@@ -103,11 +124,11 @@
         <label for="book-image" class="form-label">Image</label>
 
         @if ($book->image)
-            <img
-                src="{{ asset('images/' . $book->image) }}"
-                class="img-fluid img-thumbnail d-block mb-2"
-                alt="{{ $book->name }}"
-            >
+        <img
+            src="{{ asset('images/' . $book->image) }}"
+            class="img-fluid img-thumbnail d-block mb-2"
+            alt="{{ $book->name }}"
+        >
         @endif
 
         <input
@@ -116,7 +137,6 @@
             name="image"
             class="form-control @error('image') is-invalid @enderror"
         >
-
         @error('image')
             <p class="invalid-feedback">{{ $errors->first('image') }}</p>
         @enderror

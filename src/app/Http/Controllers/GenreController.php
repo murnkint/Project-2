@@ -14,7 +14,7 @@ class GenreController extends Controller
 
         return view('genres.list', [
             'title' => 'Genres',
-            'items' => $genres
+            'items' => $genres  
         ]);
     }
 
@@ -59,7 +59,7 @@ class GenreController extends Controller
         return redirect('/genres');
     }
 
-    public function destroy(Genre $genre)
+    public function delete(Genre $genre)
     {
         $genre->delete();
         return redirect('/genres');

@@ -12,7 +12,22 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
         crossorigin="anonymous"
     >
+        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+        <style>
+        body {
+            background-color: #dcd5b4; /* Yellow background */
+            color: #000000; /* Black text */
+        }
 
+        header.navbar {
+            background-color: #800000 !important; /* dark red navbar background color */
+        }
+
+        footer {
+            background-color: #020048 !important; /* dark red navbar background color */
+            color: #ffffff; /* Set your desired footer text color */
+        }
+    </style>
     </head>
 
     <body>
@@ -28,7 +43,7 @@
 
         <footer class="mt-5 py-5">
             <div class="container">
-                K. Mūrniece, VeA, 2024
+                Kintija Mūrniece, 2024
             </div>
         </footer>
 

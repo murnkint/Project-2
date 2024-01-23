@@ -6,17 +6,17 @@
 
     @if (count($items) > 0)
 
-        <table class="table table-striped table-hover table-sm custom-table">
+        <table class="table table-striped table-hover">
             <thead class="thead-light">
                 <tr>
                     <th>ID</th>
-                    <th>Name and Surname</th>
+                    <th>Genre name</th>
                     <th>Actions</th>
                 </tr>
                 <style>
                 /* Custom styles for the table */
                 table {
-                    background-color: #c2b280; /* Dark red background for the table */
+                    background-color: #c2b280; /* Background for the table */
                     color: #ffffff; /* White text color for the table */
                 }
 
@@ -38,36 +38,34 @@
                     background-color: #800000; /* Dark red background on hover for danger buttons */
                     color: #ffffff; /* White text color on hover for danger buttons */
                 }
-
+                
                 </style>
             </thead>
             <tbody>
 
-            @foreach($items as $author)
-                <tr>
-                    <td>{{ $author->id }}</td>
-                    <td>{{ $author->name }}</td>
-                    <td>
-                        <a href="/authors/update/{{ $author->id }}" class="btn btn-outline-primary btn-sm">Edit</a>
-                    
-                        <form action="/authors/delete/{{ $author->id }}" method="post" class="d-inline deletion-form">
-                            @csrf
-                            <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
+                @foreach($items as $genre)
+                    <tr>
+                        <td>{{ $genre->id }}</td>
+                        <td>{{ $genre->name }}</td>
+                        <td>
+                            <a href="/genres/edit/{{ $genre->id }}" class="btn btn-outline-primary btn-sm">Edit</a>
+                            <form action="/genres/delete/{{ $genre->id }}" method="post" class="d-inline deletion-form">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
             </tbody>
         </table>
 
     @else
 
-        <p>No entries found in the database</p>
+        <p>No genres found in the database</p>
 
     @endif
 
-    <a href="/authors/create" class="btn btn-primary">Create a new author</a>
+    <a href="/genres/create" class="btn btn-primary">Add a new genre</a>
 
 @endsection
-

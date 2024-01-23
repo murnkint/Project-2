@@ -15,6 +15,24 @@
     crossorigin="anonymous"
     >
 
+    <style>
+        body {
+            background-color: #dcd5b4; /* Yellow background */
+            color: #800000; /* Dark red text */
+        }
+        .navbar {
+            background-color: #800000 !important; /* dark red navbar background color */
+        }
+
+        .navbar-brand,
+        .navbar-nav .nav-link {
+            color: #fff !important; /* white text color for navbar brand and links */
+        }
+        footer {
+            color: #ffffff; /* Set your desired footer text color */
+        }
+    </style>
+
 </head>
 
 <body>
@@ -37,6 +55,9 @@ data-bs-target="#navbarNav">
                     @if(Auth::check())
                         <li class="nav-item">
                             <a class="nav-link" href="/authors">Book authors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/genres">Genres</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/books">Books</a>
@@ -65,11 +86,11 @@ data-bs-target="#navbarNav">
         </div>
     </main>
 
-    <footer class="text-bg-dark mt-3">
+    <footer class="text-light mt-4" style="background-color: #020048 !important;">
         <div class="container">
             <div class="row py-5">
                 <div class="col">
-                    Kintija Mūrniece, 2023
+                    Kintija Mūrniece, 2024
                 </div>
             </div>
         </div>
